@@ -1,0 +1,66 @@
+on start
+{
+  long res;
+  res = rs232Open(4);
+  if(res==1)
+    write("opened port is success");
+   res = rs232Configure(4,9600,8,1,0);
+  if(res==1)
+    write("configure port is success");
+}
+on key 'i'
+{
+  int i;
+  int length;
+  long res;
+  char text[30] = "ISET1:2.0";
+  byte buffer[30];
+  length = strlen(text)+1;
+  for(i=0;i<length;i++)
+    buffer[i]=text[i];
+  res = rs232Send(4,buffer,length);
+  if(res==1)
+    write("send success");
+}
+on key 'v'
+{
+  int j;
+  int length1;
+  long res1;
+  char text1[30] = "VSET1:5.0";
+  byte buffer[30];
+  length1 = strlen(text1)+1;
+  for(j=0;j<length1;j++)
+    buffer[j]=text1[j];
+  res1 = rs232Send(4,buffer,length1);
+  if(res1==1)
+    write("send success");
+}
+on key 'o'
+{
+  int x;
+  int length11;
+  long res11;
+  char text[30] = "OUT0";
+  byte buffer[30];
+  length11 = strlen(text);
+  for(x=0;x<length11;x++)
+    buffer[x]=text[x];
+  res11 = rs232Send(4,buffer,length11);
+  if(res11==1)
+    write("send success");
+}
+on key 'f'
+{
+  int k;
+  int length11;
+  long res11;
+  char text[30] = "OUT1";
+  byte buffer[30];
+  length11 = strlen(text);
+  for(k=0;k<length11;k++)
+    buffer[k]=text[k];
+  res11 = rs232Send(4,buffer,length11);
+  if(res11==1)
+    write("send success");
+}
